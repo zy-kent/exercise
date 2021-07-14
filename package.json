@@ -9,6 +9,8 @@
   },
   "dependencies": {
     "core-js": "^3.6.5",
+    "monaco-editor": "^0.25.2",
+    "monaco-editor-webpack-plugin": "^4.0.0",
     "vue": "^2.6.11"
   },
   "devDependencies": {

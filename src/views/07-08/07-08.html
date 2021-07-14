@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>进制转换</title>
+</head>
+<body>
+<script>
+const str = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-+".split("");
+changeSystem(999999999888.12333)
+//总处理
+function changeSystem(num) {
+    if (!num | typeof num != 'number') {
+        return
+    }
+    const intNum = parseInt(num)
+    const doubleNum = num - intNum
+    return `${changeInt(intNum)}.${changeDouble(doubleNum)}`
+}
+//处理整数
+function changeInt(num) {
+    let intArr = []
+    let int = num
+    while(int > 0) {
+        intArr.unshift(str[int % 64])
+        int = parseInt(int / 64)
+    }
+    return intArr.join('')
+}
+//处理小数
+function changeDouble(num) {
+    let doubleArr = []
+    let double = parseFloat(num)
+    let bol = true
+    while(doubleArr.length < 20 && bol) {
+        double *= 64
+        let computedNum = double
+        doubleArr.unshift(str[parseInt(computedNum)])
+        double = computedNum - parseInt(computedNum)
+        bol = String(double).indexOf('.') > -1
+    }
+    return doubleArr.join('')
+}
+</script>
+</body>
+</html>

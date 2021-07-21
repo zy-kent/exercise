@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>链表反转</title>
+</head>
+<body>
+<script>
+function revers(link) {
+    if (!link) {
+        return null
+    }
+    let list = link
+    let ori = list
+    let mid = null
+    while(ori.next !== null) {
+        mid = ori.next
+        ori.next = mid.next
+        mid.next = list
+        list = mid
+    }
+    return list
+}
+</script>
+</body>
+</html>
